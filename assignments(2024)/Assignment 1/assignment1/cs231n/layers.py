@@ -770,9 +770,21 @@ def svm_loss(x, y):
     # TODO: Copy over your solution from A1.
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+    N, C = x.shape
+    
+    correct_mask = (np.arange(N), y)
+    correct_scores = x[correct_mask]
+    margins = x - correct_scores.reshape(N, 1) + 1
+    margins[margins < 0] = 0
+    margins[correct_mask] = 0
 
-    pass
-
+    loss = np.sum(margins) / N
+    
+    positive_mask = margins > 0
+    row_sums = np.sum(positive_mask, axis=1)
+    dx = positive_mask.astype(float)
+    dx[correct_mask] = -row_sums
+    dx /= N
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
     ###########################################################################
     #                             END OF YOUR CODE                            #
@@ -800,9 +812,18 @@ def softmax_loss(x, y):
     # TODO: Copy over your solution from A1.
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+    N, C = x.shape
 
-    pass
+    exp_scores = np.exp(x - np.max(x, axis=1, keepdims=True))
+    probs = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
 
+    correct_mask = (np.arange(N), y)
+    
+    loss = np.sum(-np.log(probs[correct_mask])) / N
+
+    dx = probs.copy()
+    dx[correct_mask] -= 1
+    dx /= N
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
     ###########################################################################
     #                             END OF YOUR CODE                            #
