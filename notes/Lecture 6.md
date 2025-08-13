@@ -132,6 +132,8 @@
     ```python
     W = 0.01 * np.random.randn(D, H)
     ```
+
+    ![image.png](assets/Lecture%206/image%203.png)
     
     - 작은 네트워크에서는 괜찮지만, 큰 네트워크에서는 모든 활성 지도가 0이 되는 문제 발생
     ∵ 각 레이어의 작은 입력값과 작은 W을 계속 곱하기 때문
@@ -141,6 +143,8 @@
     ```python
     W = 1.0 * np.random.randn(D, H)
     ```
+
+    ![image.png](assets/Lecture%206/image%204.png)
     
     - 대부분의 뉴런이 포화상태가 되는 문제 발생
     - (tanh 활성함수 기준) 활성 함수의 그래디언트가 0에 가까워 업데이트도 일어나지 않음
@@ -150,6 +154,8 @@
 ```python
 W = np.random.randn(D, H) / np.sqrt(D)
 ```
+
+![image.png](assets/Lecture%206/image%205.png)
 
 - 입력의 분산이 출력의 분산과 같도록 하기 위한 가중치를 도출하여 얻은 공식
 - 직관적으로, 입력의 개수가 적으면 W의 값이 커지고 이들을 내적해서 얻은 출력은 큰 분산을 갖게 됨.
@@ -178,7 +184,7 @@ $$
 
 1. 각 차원에 대해 독립적으로 경험적인 평균과 분산을 계산한다.
     
-    ![image.png](assets/Lecture%206/image%203.png)
+    ![image.png](assets/Lecture%206/image%206.png)
     
 2. 정규화한다.
     
@@ -191,7 +197,7 @@ $$
     → 가중치(W)를 곱하면서 나쁜 scaling 효과가 발생하는데, 이것을 원상태로 돌리는 과정
     
 
-![image.png](assets/Lecture%206/image%204.png)
+![image.png](assets/Lecture%206/image%207.png)
 
 > 다만, tanh 레이어에 표준정규화된 입력을 넣는 것이 필요한가?
 > 
@@ -331,25 +337,25 @@ for count in xrange(max_count):
 
 </aside>
 
-![image.png](assets/Lecture%206/image%205.png)
+![image.png](assets/Lecture%206/image%208.png)
 
-![image.png](assets/Lecture%206/image%206.png)
+![image.png](assets/Lecture%206/image%209.png)
 
 ### Monitoring or Tracking
 
 - learning rate
     
-    ![image.png](assets/Lecture%206/image%207.png)
+    ![image.png](assets/Lecture%206/image%2010.png)
     
     - 처음에 가파르게 감소하고 이후에도 감소세가 유지되는 값이 최적의 값
 - Initialization
     
-    ![image.png](assets/Lecture%206/image%208.png)
+    ![image.png](assets/Lecture%206/image%2011.png)
     
     - 처음에 loss가 줄지 않다가 이후 가파르게 주는 것은 나쁜 초기화를 의심해볼 수 있음
 - overfitting
     
-    ![image.png](assets/Lecture%206/image%209.png)
+    ![image.png](assets/Lecture%206/image%2012.png)
     
     - Train과 Val 정확도의 차이가
         - 너무 큼 = 오버피팅 → regularization strength를 증가
