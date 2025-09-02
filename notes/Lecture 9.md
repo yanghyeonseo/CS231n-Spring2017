@@ -19,7 +19,7 @@
 
 1. ‘12의 AlexNet은 최초의 CNN 기반 우승자로 오차를 의미 있게 감소시켰음
 (’13)의 ZFNet은 본질적으로 AlexNet과 거의 동일함
-2. ‘14, ‘15의 VGGNet과 GoogLeNet은 더 깊은 네트워크
+2. ‘14, ‘14의 VGGNet과 GoogLeNet은 더 깊은 네트워크
 3. ‘15의 ResNet은 엄청나게 깊은 네트워크
 
 # AlexNet
